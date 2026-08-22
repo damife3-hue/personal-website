@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="title">
+      <h1>Welcome to Dami's webpage</h1>
+      <p>this is where dream's come true</p>
+      <button onclick="makeDreamComeTrue()">Make dream come true</button>
+    </div>
+  </body>
+  <style>
+    body {
+      background-image: url("https://iso.500px.com/wp-content/uploads/2014/07/big-one.jpg");
+      background-size: cover;
+    }
+
+    #title {
+      width: 100%;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    h1 {
+      color: blue;
+    }
+    button:hover {
+      color: red;
+      cursor: pointer;
+      font-size: 20px;
+    }
+  </style>
+
+  <script>
+    function makeDreamComeTrue() {
+      document.body.style.background =
+        "url(https://i.pinimg.com/originals/96/b5/1d/96b51d3bb8104d88b94951a74d4009dd.gif)";
+      document.getElementById("title").style.visibility = "hidden";
+    }
+  </script>
+</html>
