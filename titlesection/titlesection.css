@@ -1,5 +1,6 @@
 :root { /* This is what is used to create variables in css*/
-  --titleSectionPrimaryColor: Brown;
+  --titleSectionPrimaryColor: white;
+  --titleSectionSecondaryColor: rgb(204,156,188);
 } 
     
     
@@ -24,6 +25,7 @@
       background-color: transparent;
     }
     .title-section-button:hover {
-      background-color: red;
+      background-color: var(--titleSectionPrimaryColor);
+      color: var(--titleSectionSecondaryColor);
       cursor: pointer;  
       }
