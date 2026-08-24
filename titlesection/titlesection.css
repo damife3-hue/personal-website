@@ -13,9 +13,7 @@
       background-position: center top;
       }
 
-    h1 {
-      color: var(--titleSectionPrimaryColor);
-    }
+   
 
     .title-section-header{
       margin-bottom: -5px;

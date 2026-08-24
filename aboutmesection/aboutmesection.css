@@ -1,0 +1,8 @@
+#aboutme {
+    text-align: center;
+    border: 1px solid black;
+}
+
+.aboutme-section-description{
+    text-align: justify;
+}

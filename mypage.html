@@ -4,37 +4,71 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./titlesection/titlesection.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Armata&display=swap">
+    <link rel="stylesheet" href="./titlesection/titlesection.css" />
+    <link rel="stylesheet" href="./aboutmesection/aboutmesection.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Armata&display=swap"
+    />
   </head>
-  <body>  
+  <body>
     <div class="main-section" id="title">
       <h1 class="title-section-header">Damife Odunukan</h1>
-      <p class="title-section-subtitle">Empowering Individuals Through Education</p>
-      <button class="title-section-button" onclick="makeDreamComeTrue()">Combine knowledge with action</button>
-    </div>  
-    
+      <p class="title-section-subtitle">
+        Empowering Individuals Through Education
+      </p>
+      <button class="title-section-button" onclick="makeDreamComeTrue()">
+        Combine knowledge with action
+      </button>
+    </div>
+    <div class="misc-section" id="aboutme">
+      <div class="text-block-container">
+        <h1>About me</h1>
+        <p class="aboutme-section-description">A likely cause: the word "elements"might be 
+        getting matched by a completely 
+        different highlighting rule, some HTML/Emmet 
+        extensions or custom syntax highlighters have 
+        special color rules for certain keywords 
+        (like tag names such as div, span, elements, etc.)
+         that can accidentally apply 
+         even inside comments if the extension's
+        regex isn't scoped correctly.
+        </p>
+      </div>
+      
+    </div>
   </body>
 
-  
   <style>
     /* * Asterisk target's all elements */
-    *{ 
-      box-sizing: border-box; 
-      font-family: 'Armata';
+    * {
+      box-sizing: border-box;
+      font-family: "Armata";
     }
 
-    <!--Below is CSS RESET, VERY IMPORTANT-->
-    html, body {
+    <!--Below is CSS RESET,
+    VERY IMPORTANT-- > html,
+    body {
       margin: 0px;
       padding: 0px;
     }
 
-    .main-section{
+    .main-section {
       width: 100vw;
       height: 100vh;
       background-size: cover;
-      padding: 25px;
+      padding: 100px 25px;
+    }
+
+    .misc-section {
+      width: 100vw;
+      padding: 100px 25px;
+    }
+
+    .text-block-container{
+      border: 1px solid black;
+      width: 65%;
+      margin: 0 auto; /*this means 0 margin top bottom, then auto left and right to make it stay in the center*/
     }
   </style>
 
