@@ -1,5 +1,11 @@
-
+:root { /* This is what is used to create variables in css*/
+  --titleSectionPrimaryColor: Brown;
+} 
+    
+    
+    
     #title {
+      color: var(--titleSectionPrimaryColor);
       text-align: center;
       padding-top: 200px;
       background-image: url('/images/igor-kasalovic-tNDvFkxkBHo-unsplash.jpg');
@@ -7,10 +13,17 @@
       }
 
     h1 {
-      color: blue;
+      color: var(--titleSectionPrimaryColor);
     }
-    button:hover {
-      color: red;
-      cursor: pointer;
-      font-size: 20px;
+
+    .title-section-button{
+      color: var(--titleSectionPrimaryColor);
+      border: solid var(--titleSectionPrimaryColor) 1px;
+      border-radius: 5px;
+      padding: 15px 20px;
+      background-color: transparent;
     }
+    .title-section-button:hover {
+      background-color: red;
+      cursor: pointer;  
+      }
