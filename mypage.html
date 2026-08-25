@@ -10,7 +10,10 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Armata&display=swap"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+    />
   </head>
   <body>
     <div class="main-section" id="title">
@@ -25,25 +28,30 @@
     <div class="misc-section" id="aboutme">
       <div class="text-block-container">
         <h1>About me</h1>
-        <p class="aboutme-section-description">A likely cause: the word "elements"might be 
-        getting matched by a completely 
-        different highlighting rule, some HTML/Emmet 
-        extensions or custom syntax highlighters have 
-        special color rules for certain keywords 
-        (like tag names such as div, span, elements, etc.)
-         that can accidentally apply 
-         even inside comments if the extension's
-        regex isn't scoped correctly.
+        <p class="aboutme-section-description">
+          A likely cause: the word "elements"might be getting matched by a
+          completely different highlighting rule, some HTML/Emmet extensions or
+          custom syntax highlighters have special color rules for certain
+          keywords (like tag names such as div, span, elements, etc.) that can
+          accidentally apply even inside comments if the extension's regex isn't
+          scoped correctly.
         </p>
         <div class="aboutme-icons">
-          <i class="aboutme-icon fa-brands fa-linkedin-in"></i>
-          <i class="aboutme-icon fa-brands fa-instagram"></i>
-          <i class="aboutme-icon fa-brands fa-behance"></i>
-          <i class="aboutme-icon fa-regular fa-envelope"></i>
-
+          <a href="https://www.linkedin.com/in/damife-web-design/" target="_blank"
+            ><i class="aboutme-icon fa-brands fa-linkedin-in"></i
+          ></a>
+          <a href="https://damifeodunukan.framer.website/" target="_blank">
+            <i class="aboutme-icon fa-brands fa-instagram"></i
+          ></a>
+          <a href="https://www.behance.net/damife_odunukan" target="_blank"
+            ><i class="aboutme-icon fa-brands fa-behance"></i
+          ></a>
+          <a href="mailto:damife3@gmail.com"><i class="aboutme-icon fa-regular fa-envelope"></i></a>
+        </div>
+        <div class="aboutme-download-link">
+          <a href="./aboutmesection/Damife_Junior_Web_Developer_Resume.pdf" download target="_blank">Download My CV</a>
         </div>
       </div>
-      
     </div>
   </body>
 
@@ -73,13 +81,13 @@
       padding: 120px 25px;
     }
 
-    .text-block-container{
+    .text-block-container {
       width: 65%;
       margin: 0 auto; /*this means 0 margin top bottom, then auto left and right to make it stay in the center*/
     }
 
-    @media screen and (max-width:500px){
-        .text-block-container{
+    @media screen and (max-width: 500px) {
+      .text-block-container {
         width: 100%;
       }
     }

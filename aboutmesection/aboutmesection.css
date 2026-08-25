@@ -11,7 +11,11 @@
 .aboutme-icons{
     font-size: 25px;
     margin-top: 45px;
+    margin-bottom:25px;
+}
 
+.aboutme-icons > a {
+    text-decoration: none; /*this removes the blue color that is usually in links. the code is targetting a tags in the class*/
 }
 
 .aboutme-icon{
@@ -22,4 +26,8 @@
 .aboutme-icon:hover{
     cursor: pointer;
     color: var(--titleSectionTertiaryColor);
+}
+
+.aboutme-download-link > a {
+    color: black;
 }
