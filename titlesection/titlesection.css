@@ -1,38 +1,35 @@
-:root { /* This is what is used to create variables in css*/
+:root {
+  /* This is what is used to create variables in css*/
   --titleSectionPrimaryColor: white;
-  --titleSectionSecondaryColor: rgb(204,156,188);
-} 
-    
-    
-    
-    #title {
-      color: var(--titleSectionPrimaryColor);
-      text-align: center;
-      padding-top: 200px;
-      background-image: url('/images/igor-kasalovic-tNDvFkxkBHo-unsplash.jpg');
-      background-position: center top;
-      }
+  --titleSectionSecondaryColor: rgb(204, 156, 188);
+  --titleSectionTertiaryColor: rgb(157, 172, 178);
+}
 
-   
+#title {
+  color: var(--titleSectionPrimaryColor);
+  text-align: center;
+  padding-top: 200px;
+  background-image: url("/images/igor-kasalovic-tNDvFkxkBHo-unsplash.jpg");
+  background-position: center top;
+}
 
-    .title-section-header{
-      margin-bottom: -5px;
-    }
+.title-section-header {
+  margin-bottom: -5px;
+}
 
-     .title-section-subtitle{
-      margin-bottom: 40px;
-    }
+.title-section-subtitle {
+  margin-bottom: 40px;
+}
 
-
-    .title-section-button{
-      color: var(--titleSectionPrimaryColor);
-      border: solid var(--titleSectionPrimaryColor) 1px;
-      border-radius: 5px;
-      padding: 15px 20px;
-      background-color: transparent;
-    }
-    .title-section-button:hover {
-      background-color: var(--titleSectionPrimaryColor);
-      color: var(--titleSectionSecondaryColor);
-      cursor: pointer;  
-      }
+.title-section-button {
+  color: var(--titleSectionPrimaryColor);
+  border: solid var(--titleSectionPrimaryColor) 1px;
+  border-radius: 5px;
+  padding: 15px 20px;
+  background-color: transparent;
+}
+.title-section-button:hover {
+  background-color: var(--titleSectionPrimaryColor);
+  color: var(--titleSectionSecondaryColor);
+  cursor: pointer;
+}
