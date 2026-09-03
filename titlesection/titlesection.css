@@ -9,7 +9,7 @@
   color: var(--titleSectionPrimaryColor);
   text-align: center;
   padding-top: 200px;
-  background-image: url("/images/igor-kasalovic-tNDvFkxkBHo-unsplash.jpg");
+  background-image: url("../images/igor-kasalovic-tNDvFkxkBHo-unsplash.jpg");
   background-position: center top;
 }
 
