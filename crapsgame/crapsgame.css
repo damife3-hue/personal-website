@@ -1,5 +1,5 @@
 #craps-game{
-    background-image: url('../images/Vegas.jpg');
+    background-image: url('../images/vegas.jpg');
     color: white; 
     background-position: center top;
 }
@@ -14,7 +14,35 @@
     height: min(500px, 57vw);
     border: solid 1px white;
     margin: 100px auto 0 auto; /*this is to put the div in the middle. 0 top and bottom, automatic left and right*/
-    background-image: url('../images/Crapstable.jpg');
+    background-image: url('../images/smallercrapstable.jpg');
     background-size: cover;
     background-position: center top;
+}
+
+.craps-registration-pane{
+    margin-top: 25px;
+    text-align: center;
+}
+
+.craps-registration-input{
+    background: none;
+    border: none;
+    border-bottom: 1px solid white;
+    margin-top: 25px;
+    Color: white;
+    text-align: center;
+    
+}
+
+.craps-registration-input:focus {
+    outline: none; /*this removes the annnoying white border when the input is in focus*/
+}
+
+.craps-registration-continue{
+    margin-top: 25px;
+}
+
+.craps-registration-continue:hover{
+    cursor: pointer;
+    font-weight: bold;
 }
