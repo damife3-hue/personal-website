@@ -1,19 +1,33 @@
+
+:root{
+    --width-scale: min(700px, 80vw, 80vh);
+    --height-scale: calc(var(--width-scale) * 0.714);
+    --game-title-size: min(calc(var(--height-scale) * 0.1), 2em);
+    --title-margin-bottom: calc(var(--height-scale) * 0.25);
+
+
+}
+
+
 #craps-game{
     background-image: url('../images/vegas.jpg');
     color: white; 
     background-position: center top;
+    padding: 1px;
 }
 
 .craps-game-title{
     text-align: center;
-    margin-top: 100px;
+    font-size: var(--game-title-size);
+    margin-bottom: var(--title-margin-bottom);
+    margin-top: calc(calc(100vh - var(--game-title-size) - var(--title-margin-bottom) - var(--height-scale)) / 2);
 }
 
 .craps-game-container{
-    width: min(700px, 80vw); /*This made the width smaller in mobile*/
-    height: min(500px, 57vw);
+    width: var(--width-scale); /*This made the width smaller in mobile*/
+    height: var(--height-scale);
     border: solid 1px white;
-    margin: 100px auto 0 auto; /*this is to put the div in the middle. 0 top and bottom, automatic left and right*/
+    margin: 0 auto; /*this is to put the div in the middle. 0 top and bottom, automatic left and right*/
     background-image: url('../images/smallercrapstable.jpg');
     background-size: cover;
     background-position: center top;
