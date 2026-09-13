@@ -1,17 +1,21 @@
 // Craps Main Data
-let crapsUsername = ""
+let crapsUsername = "";
 
 // Craps Game Settings
-const startingMoney = 1000
-const startingRounds = 0
+const startingMoney = 1000;
+const startingRounds = 0;
 
 // HTML Elements IDs
 const crapsUsernameInput = "craps-username-input";
 const crapsRegistrationPane = "craps-registration-pane";
 const crapsMainSection = "craps-main-section";
-const crapsStatsUsername = "craps-stats-username"
-const crapsStatsMoney = "craps-stats-money"
-const crapsStatsRounds = "craps-stats-rounds"
+const crapsStatsUsername = "craps-stats-username";
+const crapsStatsMoney = "craps-stats-money";
+const crapsStatsRounds = "craps-stats-rounds";
+
+// In-game variables
+let currentMoney = startingMoney
+let currentRounds = startingRounds;
 
 function makeDreamComeTrue() {
   document.body.style.background =
@@ -25,14 +29,16 @@ function registerCrapsPlayer() {
   //Username Validation Check
 
   // Below is Regex for searching for a pattern in a string.
-  let firstCharIsDigitRegex = /^[0-9]|[^a-zA-z0-9_]/g // the carey(^) behind the [] means negation
+  let firstCharIsDigitRegex = /^[0-9]|[^a-zA-z0-9_]/g; // the carey(^) behind the [] means negation
 
-  if (crapsUsername.length < 5 || firstCharIsDigitRegex.test(crapsUsername)){
-    alert("Username must be at least 5 characters long, alphanumeric and underscore only and cannot start with a number")
+  if (crapsUsername.length < 5 || firstCharIsDigitRegex.test(crapsUsername)) {
+    alert(
+      "Username must be at least 5 characters long, alphanumeric and underscore only and cannot start with a number",
+    );
   } else {
-    removeRegistrationPane()
-    showMainGameSection()
-    setupFirstRound()
+    removeRegistrationPane();
+    showMainGameSection();
+    setupFirstRound();
   }
 }
 
@@ -44,16 +50,18 @@ function showMainGameSection() {
   document.getElementById(crapsMainSection).style.display = "block"; //display: it is set to none in the css so it won't show at first
 }
 
-function setupFirstRound(){
+function setupFirstRound() {
   document.getElementById(crapsStatsUsername).innerHTML = crapsUsername;
-  setMoney(startingMoney)
-  setRounds(startingRounds)
+  currentMoney = startingMoney
+  currentRounds = startingRounds
+  setMoney(currentMoney);
+  setRounds(currentRounds);
 }
 
-function setMoney(money){
+function setMoney(money) {
   document.getElementById(crapsStatsMoney).innerHTML = money;
 }
 
-function setRounds(round){
+function setRounds(round) {
   document.getElementById(crapsStatsRounds).innerHTML = round;
 }
