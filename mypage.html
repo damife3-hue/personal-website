@@ -6,7 +6,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="./titlesection/titlesection.css" />
     <link rel="stylesheet" href="./aboutmesection/aboutmesection.css" />
-    <link rel="stylesheet" href="./crapsgame/crapsgame.css">
+    <link rel="stylesheet" href="./crapsgame/crapsgame.css" />
+    <link rel="stylesheet" href="./crapsgame/utils.css"/>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Armata&display=swap"
@@ -38,7 +39,9 @@
           scoped correctly.
         </p>
         <div class="aboutme-icons">
-          <a href="https://www.linkedin.com/in/damife-web-design/" target="_blank"
+          <a
+            href="https://www.linkedin.com/in/damife-web-design/"
+            target="_blank"
             ><i class="aboutme-icon fa-brands fa-linkedin-in"></i
           ></a>
           <a href="https://damifeodunukan.framer.website/" target="_blank">
@@ -47,54 +50,59 @@
           <a href="https://www.behance.net/damife_odunukan" target="_blank"
             ><i class="aboutme-icon fa-brands fa-behance"></i
           ></a>
-          <a href="mailto:damife3@gmail.com"><i class="aboutme-icon fa-regular fa-envelope"></i></a>
+          <a href="mailto:damife3@gmail.com"
+            ><i class="aboutme-icon fa-regular fa-envelope"></i
+          ></a>
         </div>
         <div class="aboutme-download-link">
-          <a href="./aboutmesection/Damife_Junior_Web_Developer_Resume.pdf" download target="_blank">Download My CV</a>
+          <a
+            href="./aboutmesection/Damife_Junior_Web_Developer_Resume.pdf"
+            download
+            target="_blank"
+            >Download My CV</a
+          >
         </div>
       </div>
     </div>
     <div class="main-section" id="craps-game">
-        <div class="craps-game-title">Craps Casino Game</div>
-        <div class="craps-game-container">
-          <div id="craps-registration-pane">
-            <div>
-              Enter username to begin
-            </div>
-            <div>
-              <input class="craps-registration-input" id="craps-username-input">
-            </div>
-            <div class="craps-registration-continue" onclick="registerCrapsPlayer()">
-              Continue              
-            </div>
+      <div class="craps-game-title">Craps Casino Game</div>
+      <div class="craps-game-container">
+        <div id="craps-registration-pane">
+          <div>Enter username to begin</div>
+          <div>
+            <input class="craps-registration-input" id="craps-username-input" />
           </div>
-          <div id="craps-main-section">
-              <div class="craps-main-section-stats">
-                <div>
-                  Welcome, <span id="craps-stats-username"></span>
-                </div>
-                <div id = "craps-stats-money-container">
-                  $<span id="craps-stats-money"></span>
-                </div>
-                <div>
-                  Rounds: <span id="craps-stats-rounds"></span>
-                </div>
-              </div>
-              <div class="craps-round-manager">
-                <div id="EVEN" onclick="betEven()">
-                  EVEN
-                </div>
-                <div id = "ODD" onclick="betOdd()">
-                  ODD
-                </div>
-                <div>
-                  <span onclick="decreaseBet()">-</span>
-                  <span id="craps-user-bet-amount">$100</span>
-                  <span onclick="increaseBet()">+</span>
-                <div>
-              </div>
+          <div
+            class="craps-registration-continue"
+            onclick="registerCrapsPlayer()"
+          >
+            Continue
           </div>
         </div>
+        <div id="craps-main-section">
+          <div class="craps-main-section-stats">
+            <div>Welcome, <span id="craps-stats-username"></span></div>
+            <div id="craps-stats-money-container">
+              $<span id="craps-stats-money"></span>
+            </div>
+            <div>Rounds: <span id="craps-stats-rounds"></span></div>
+          </div>
+          <div class="craps-on-table-container">
+            <div class="craps-roll-dice-container no-select"> Roll Dice <i class="fa-solid fa-dice"></i></div>           
+          </div>
+          <div class="craps-round-manager">
+            <div class="craps-betting-grid no-select">
+              <div class="craps-bet-button" id="EVEN" onclick="betEven()">EVEN</div>
+              <div class="craps-bet-amount-container">
+                <span class="craps-user-bet-amount-change" onclick="decreaseBet()">-</span>
+                <span id="craps-user-bet-amount">$100</span>
+                <span class="craps-user-bet-amount-change" onclick="increaseBet()">+</span>
+              </div>
+              <div class="craps-bet-button" id="ODD" onclick="betOdd()">ODD</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 
@@ -105,8 +113,9 @@
       font-family: "Armata";
     }
 
-    <!--Below is CSS RESET,
-    VERY IMPORTANT-- > html,
+    /* Below is CSS RESET,
+    VERY IMPORTANT */
+    html,
     body {
       margin: 0px;
       padding: 0px;
@@ -137,6 +146,4 @@
   </style>
 
   <script src="./crapsgame/crapsgame.js"></script>
-
-  
 </html>
