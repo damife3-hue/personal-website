@@ -107,10 +107,22 @@ function setBetAmount(betAmount) {
 }
 
 function rollDice() {
+  formatDiceScale()
   document.getElementById(crapsRollDiceButton).style.display = "none";
   const diceRollElement = document.getElementById(crapsRollDiceAnimationContainer)
   rollADie({ element: diceRollElement, numberOfDice: 2, callback: processDiceResult, delay: 1000000000})
 
+}
+
+function formatDiceScale(){
+  const vw = window.innerWidth * 0.8
+  const vh = window.innerHeight * 0.8
+  const widthScale = Math.min(700,vw,vh)
+  const heightScale = widthScale * 0.714
+  const theScale = heightScale / 494.6592 // check Scaling the Dice roll animation chapter
+  document.getElementById(crapsRollDiceAnimationContainer).style.transform = "scale(" + theScale + ")";
+  
+  // 0.714. this is the ratio
 }
 
 function processDiceResult(diceResult){
