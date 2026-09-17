@@ -110,9 +110,11 @@ function rollDice() {
   formatDiceScale()
   document.getElementById(crapsRollDiceButton).style.display = "none";
   const diceRollElement = document.getElementById(crapsRollDiceAnimationContainer)
-  rollADie({ element: diceRollElement, numberOfDice: 2, callback: processDiceResult, delay: 1000000000})
+  rollADie({ element: diceRollElement, numberOfDice: 2, callback: processDiceResult, delay: 1000000000}) // Rolladie is the javascript we imported. check htmlpage
 
 }
+
+window.addEventListener("resize", formatDiceScale)
 
 function formatDiceScale(){
   const vw = window.innerWidth * 0.8
