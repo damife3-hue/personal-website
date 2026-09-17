@@ -26,6 +26,7 @@ let currentMoney = startingMoney;
 let currentRounds = startingRounds;
 let currentBet = bets.even;
 let currentBetAmount = minimumBet;
+let canChangeBet = true;
 
 function makeDreamComeTrue() {
   document.body.style.background =
@@ -62,19 +63,19 @@ function showMainGameSection() {
 
 function setupFirstRound() {
   document.getElementById(crapsStatsUsername).innerHTML = crapsUsername;
-  currentMoney = startingMoney;
-  currentRounds = startingRounds;
-  setMoney(currentMoney);
-  setRounds(currentRounds);
+  setMoney(startingMoney);
+  setRounds(startingRounds);
   betEven();
   setBetAmount(minimumBet);
 }
 
 function setMoney(money) {
+  currentMoney = money
   document.getElementById(crapsStatsMoney).innerHTML = money;
 }
 
 function setRounds(round) {
+  currentRounds = round
   document.getElementById(crapsStatsRounds).innerHTML = round;
 }
 
@@ -87,10 +88,12 @@ function betOdd() {
 }
 
 function chooseBet(bet) {
-  currentBet = bet;
-  document.getElementById(bet).style.backgroundColor = "red";
-  const deselectBet = bet == bets.even ? bets.odd : bets.even; //shortcut to write if statement
-  document.getElementById(deselectBet).style.backgroundColor = "transparent";
+  if (canChangeBet) {
+    currentBet = bet;
+    document.getElementById(bet).style.backgroundColor = "red";
+    const deselectBet = bet == bets.even ? bets.odd : bets.even; //shortcut to write if statement
+    document.getElementById(deselectBet).style.backgroundColor = "transparent";
+  }  
 }
 
 function increaseBet() {
@@ -102,11 +105,14 @@ function decreaseBet() {
 }
 
 function setBetAmount(betAmount) {
-  currentBetAmount = betAmount;
-  document.getElementById(crapsUserBetAmount).innerHTML = "$" + betAmount;
+  if (canChangeBet){
+    currentBetAmount = betAmount;
+    document.getElementById(crapsUserBetAmount).innerHTML = "$" + betAmount;
+  }
 }
 
 function rollDice() {
+  canChangeBet = false
   formatDiceScale()
   document.getElementById(crapsRollDiceButton).style.display = "none";
   const diceRollElement = document.getElementById(crapsRollDiceAnimationContainer)
@@ -128,5 +134,21 @@ function formatDiceScale(){
 }
 
 function processDiceResult(diceResult){
-  console.log(diceResult)
+  // this returns an array like [2,4]
+  // const sum = diceResult[0] + diceResult[1]
+  const sum = diceResult.reduce((partialSum, a) => partialSum + a, 0);
+  let diceSumResult = bets.even
+  if (sum % 2 === 1) { //this means if divided by 2 with remainder 1, it is odd
+    diceSumResult = bets.odd
+  } 
+  // we didn't do an "else' block because dicesum is already set to even. an else block would be redundant
+  
+  setRounds(currentRounds + 1)
+  if (diceSumResult === currentBet) {
+    alert("YOU WIN!")
+    setMoney(currentBet + currentBetAmount)
+  } else {
+    alert("YOU LOSE")
+    setMoney(currentMoney - currentBetAmount)
+  }
 }
