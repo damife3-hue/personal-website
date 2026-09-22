@@ -116,7 +116,7 @@ function rollDice() {
   formatDiceScale()
   document.getElementById(crapsRollDiceButton).style.display = "none";
   const diceRollElement = document.getElementById(crapsRollDiceAnimationContainer)
-  rollADie({ element: diceRollElement, numberOfDice: 2, callback: processDiceResult, delay: 1000000000}) // Rolladie is the javascript we imported. check htmlpage
+  rollADie({ element: diceRollElement, numberOfDice: 2, callback: delayedProcessDiceResult, delay: 1000000000}) // Rolladie is the javascript we imported. check htmlpage
 
 }
 
@@ -129,8 +129,11 @@ function formatDiceScale(){
   const heightScale = widthScale * 0.714
   const theScale = heightScale / 494.6592 // check Scaling the Dice roll animation chapter
   document.getElementById(crapsRollDiceAnimationContainer).style.transform = "scale(" + theScale + ")";
-  
   // 0.714. this is the ratio
+}
+
+function delayedProcessDiceResult(diceResult){
+  setTimeout(function() {processDiceResult(diceResult) }, 1000)
 }
 
 function processDiceResult(diceResult){
@@ -146,7 +149,7 @@ function processDiceResult(diceResult){
   setRounds(currentRounds + 1)
   if (diceSumResult === currentBet) {
     alert("YOU WIN!")
-    setMoney(currentBet + currentBetAmount)
+    setMoney(currentMoney + currentBetAmount)
   } else {
     alert("YOU LOSE")
     setMoney(currentMoney - currentBetAmount)
