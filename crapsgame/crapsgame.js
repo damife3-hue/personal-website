@@ -56,6 +56,10 @@ function registerCrapsPlayer() {
   }
 }
 
+function showRegistrationPane() {
+  document.getElementById(crapsRegistrationPane).style.display = "block"; //display: block shows the element.
+}
+
 function removeRegistrationPane() {
   document.getElementById(crapsRegistrationPane).style.display = "none"; //display: none removes the element. it no longer takes up the space it would have
 }
@@ -64,9 +68,17 @@ function showMainGameSection() {
   document.getElementById(crapsMainSection).style.display = "block"; //display: it is set to none in the css so it won't show at first
 }
 
+function hideMainGameSection() {
+  document.getElementById(crapsMainSection).style.display = "none";
+}
+
 function setupFirstRound() {
+  document.getElementById(crapsRollDiceAnimationContainer).style.display = "none"
   document.getElementById(crapsRoundFinishGridContainer).style.display = "none"
+  document.getElementById(crapsRollDiceButton).style.display = "block";
+  document.getElementById(crapsBettingGridContainer).style.display = "block";
   document.getElementById(crapsStatsUsername).innerHTML = crapsUsername;
+  canChangeBet = true
   setMoney(startingMoney);
   setRounds(startingRounds);
   betEven();
@@ -119,6 +131,7 @@ function rollDice() {
   canChangeBet = false
   formatDiceScale()
   document.getElementById(crapsRollDiceButton).style.display = "none";
+  document.getElementById(crapsRollDiceAnimationContainer).style.display = "block"
   const diceRollElement = document.getElementById(crapsRollDiceAnimationContainer)
   rollADie({ element: diceRollElement, numberOfDice: 2, callback: delayedProcessDiceResult, delay: 1000000000}) // Rolladie is the javascript we imported. check htmlpage
 
@@ -166,4 +179,11 @@ function processDiceResult(diceResult){
   document.getElementById(crapsBettingGridContainer).style.display = "none";
   document.getElementById(crapsRoundFinishGridContainer).style.display = "block"
   document.getElementById(crapsRoundFinishMessage).innerHTML = roundFinishMessage
+}
+
+function exiGame(){ 
+  alert("After playing " + currentRounds + " rounds, you leave with " + currentMoney + "$")
+  hideMainGameSection()
+  showRegistrationPane()
+  document.getElementById(crapsUsernameInput).value = "";
 }
