@@ -10,6 +10,11 @@ const bets = {
 };
 const minimumBet = 100;
 
+// Craps Dice Roll Settings
+const numDiceToRoll = 2;
+const hideDiceDelaysMs = 1000000000;
+const processDiceResultDelayMs = 1800;
+
 // HTML Elements IDs
 const crapsUsernameInput = "craps-username-input";
 const crapsRegistrationPane = "craps-registration-pane";
@@ -18,13 +23,13 @@ const crapsStatsUsername = "craps-stats-username";
 const crapsStatsMoney = "craps-stats-money";
 const crapsStatsRounds = "craps-stats-rounds";
 const crapsUserBetAmount = "craps-user-bet-amount";
-const crapsRollDiceButton = "craps-roll-dice-button"
-const crapsRollDiceAnimationContainer = "craps-roll-dice-animation-container"
-const crapsBettingGridContainer = "craps-betting-grid-container"
-const crapsRoundFinishGridContainer = "craps-round-finish-grid-container"
-const crapsRoundFinishMessage = "craps-round-finish-message"
-const crapsNextRoundButtonDisabled ="craps-next-round-button-disabled"
-const crapsNextRoundButton ="craps-next-round-button"
+const crapsRollDiceButton = "craps-roll-dice-button";
+const crapsRollDiceAnimationContainer = "craps-roll-dice-animation-container";
+const crapsBettingGridContainer = "craps-betting-grid-container";
+const crapsRoundFinishGridContainer = "craps-round-finish-grid-container";
+const crapsRoundFinishMessage = "craps-round-finish-message";
+const crapsNextRoundButtonDisabled = "craps-next-round-button-disabled";
+const crapsNextRoundButton = "craps-next-round-button";
 
 // In-game variables
 let currentMoney = startingMoney;
@@ -38,6 +43,34 @@ function makeDreamComeTrue() {
     "url(https://i.pinimg.com/originals/96/b5/1d/96b51d3bb8104d88b94951a74d4009dd.gif)";
   document.getElementById("title").style.visibility = "hidden";
 }
+
+// HTML ELEMENT Manipulation Functions
+
+function showElement(elementId) {
+  document.getElementById(elementId).style.display = "block"; //display: block shows the element.
+}
+
+function hideElement(elementId) {
+  document.getElementById(elementId).style.display = "none"; //display: none removes the element. it no longer takes up the space it would have
+}
+
+function showRegistrationPane() {
+  showElement(crapsRegistrationPane);
+}
+
+function removeRegistrationPane() {
+  hideElement(crapsRegistrationPane);
+}
+
+function showMainGameSection() {
+  showElement(crapsMainSection);
+}
+
+function hideMainGameSection() {
+  hideElement(crapsMainSection);
+}
+
+// Game Starting Point 
 
 function registerCrapsPlayer() {
   crapsUsername = document.getElementById(crapsUsernameInput).value;
@@ -58,52 +91,42 @@ function registerCrapsPlayer() {
   }
 }
 
-function showRegistrationPane() {
-  document.getElementById(crapsRegistrationPane).style.display = "block"; //display: block shows the element.
-}
-
-function removeRegistrationPane() {
-  document.getElementById(crapsRegistrationPane).style.display = "none"; //display: none removes the element. it no longer takes up the space it would have
-}
-
-function showMainGameSection() {
-  document.getElementById(crapsMainSection).style.display = "block"; //display: it is set to none in the css so it won't show at first
-}
-
-function hideMainGameSection() {
-  document.getElementById(crapsMainSection).style.display = "none";
-}
+// Round Management Functions
 
 function setupFirstRound() {
   document.getElementById(crapsStatsUsername).innerHTML = crapsUsername;
-  document.getElementById(crapsNextRoundButtonDisabled).style.display = "none"
-  document.getElementById(crapsNextRoundButton).style.display = "block"
+  hideElement(crapsNextRoundButtonDisabled);
+  showElement(crapsNextRoundButton);
   setMoney(startingMoney);
   setRounds(startingRounds);
   betEven();
   setBetAmount(minimumBet);
-  setupNextRound()
+  setupNextRound();
 }
 
 function setupNextRound() {
-  document.getElementById(crapsRollDiceAnimationContainer).style.display = "none"
-  document.getElementById(crapsRoundFinishGridContainer).style.display = "none"
-  document.getElementById(crapsRollDiceButton).style.display = "block";
-  document.getElementById(crapsBettingGridContainer).style.display = "block";
-  canChangeBet = true
-  setBetAmount(minimumBet)
+  hideElement(crapsRollDiceAnimationContainer);
+  hideElement(crapsRoundFinishGridContainer);
+  showElement(crapsRollDiceButton);
+  showElement(crapsBettingGridContainer);
+  canChangeBet = true;
+  setBetAmount(minimumBet);
   // setBetAmount(currentBetAmount <= currentMoney ? currentBetAmount : minimumBet)
 }
 
+// User Score Setting Functions
+
 function setMoney(money) {
-  currentMoney = money
+  currentMoney = money;
   document.getElementById(crapsStatsMoney).innerHTML = money;
 }
 
 function setRounds(round) {
-  currentRounds = round
+  currentRounds = round;
   document.getElementById(crapsStatsRounds).innerHTML = round;
 }
+
+// Manage User Bet Selection Functions
 
 function betEven() {
   chooseBet(bets.even);
@@ -119,7 +142,7 @@ function chooseBet(bet) {
     document.getElementById(bet).style.backgroundColor = "red";
     const deselectBet = bet == bets.even ? bets.odd : bets.even; //shortcut to write if statement
     document.getElementById(deselectBet).style.backgroundColor = "transparent";
-  }  
+  }
 }
 
 function increaseBet() {
@@ -131,72 +154,92 @@ function decreaseBet() {
 }
 
 function setBetAmount(betAmount) {
-  if (canChangeBet){
+  if (canChangeBet) {
     currentBetAmount = betAmount;
     document.getElementById(crapsUserBetAmount).innerHTML = "$" + betAmount;
   }
 }
 
-function rollDice() {
-  canChangeBet = false
-  formatDiceScale()
-  document.getElementById(crapsRollDiceButton).style.display = "none";
-  document.getElementById(crapsRollDiceAnimationContainer).style.display = "block"
-  const diceRollElement = document.getElementById(crapsRollDiceAnimationContainer)
-  rollADie({ element: diceRollElement, numberOfDice: 2, callback: delayedProcessDiceResult, delay: 1000000000}) // Rolladie is the javascript we imported. check htmlpage
+// Roll Dice and Process Result
 
+function rollDice() {
+  canChangeBet = false;
+  formatDiceScale();
+  hideElement(crapsRollDiceButton);
+  showElement(crapsRollDiceAnimationContainer);
+  const diceRollElement = document.getElementById(
+    crapsRollDiceAnimationContainer,
+  );
+  rollADie({
+    element: diceRollElement,
+    numberOfDice: numDiceToRoll,
+    callback: delayedProcessDiceResult,
+    delay: hideDiceDelaysMs,
+  }); // Rolladie is the javascript we imported. check htmlpage
 }
 
-window.addEventListener("resize", formatDiceScale)
+window.addEventListener("resize", formatDiceScale);
 
-function formatDiceScale(){
-  const vw = window.innerWidth * 0.8
-  const vh = window.innerHeight * 0.8
-  const widthScale = Math.min(700,vw,vh)
-  const heightScale = widthScale * 0.714
-  const theScale = heightScale / 494.6592 // check Scaling the Dice roll animation chapter
-  document.getElementById(crapsRollDiceAnimationContainer).style.transform = "scale(" + theScale + ")";
+function formatDiceScale() {
+  const vw = window.innerWidth * 0.8;
+  const vh = window.innerHeight * 0.8;
+  const widthScale = Math.min(700, vw, vh);
+  const heightScale = widthScale * 0.714;
+  const theScale = heightScale / 494.6592; // check Scaling the Dice roll animation chapter
+  document.getElementById(crapsRollDiceAnimationContainer).style.transform =
+    "scale(" + theScale + ")";
   // 0.714. this is the ratio
 }
 
-function delayedProcessDiceResult(diceResult){
-  setTimeout(function() {processDiceResult(diceResult) }, 1800)
+function delayedProcessDiceResult(diceResult) {
+  setTimeout(function () {
+    processDiceResult(diceResult);
+  }, processDiceResultDelayMs);
 }
 
-function processDiceResult(diceResult){
+function processDiceResult(diceResult) {
   // this returns an array like [2,4]
   // const sum = diceResult[0] + diceResult[1]
   const sum = diceResult.reduce((partialSum, a) => partialSum + a, 0);
-  let diceSumResult = bets.even
-  if (sum % 2 === 1) { //this means if divided by 2 with remainder 1, it is odd
-    diceSumResult = bets.odd
-  } 
-  // we didn't do an "else' block because dicesum is already set to even. an else block would be redundant
-  
-  setRounds(currentRounds + 1)
-  let roundFinishMessage = ""
-  if (diceSumResult === currentBet) {
-    roundFinishMessage = "YOU WIN!"
-    setMoney(currentMoney + currentBetAmount)
-  } else {
-    roundFinishMessage = "YOU LOSE :("
-    setMoney(currentMoney - currentBetAmount)
+  let diceSumResult = bets.even;
+  if (sum % 2 === 1) {
+    //this means if divided by 2 with remainder 1, it is odd
+    diceSumResult = bets.odd;
   }
-  if (currentMoney === 0){
-    roundFinishMessage = "YOU'RE OUT!"
-    document.getElementById(crapsNextRoundButtonDisabled).style.display = "block"
-    document.getElementById(crapsNextRoundButton).style.display = "none"
-  
+  // we didn't do an "else' block because diceSumResult is already set to even. an else block would be redundant
+
+  setRounds(currentRounds + 1);
+  let roundFinishMessage = "";
+  if (diceSumResult === currentBet) {
+    roundFinishMessage = "YOU WIN!";
+    setMoney(currentMoney + currentBetAmount);
+  } else {
+    roundFinishMessage = "YOU LOSE :(";
+    setMoney(currentMoney - currentBetAmount);
+  }
+  if (currentMoney === 0) {
+    roundFinishMessage = "YOU'RE OUT!";
+    showElement(crapsNextRoundButtonDisabled);
+    hideElement(crapsNextRoundButton);
   }
 
-  document.getElementById(crapsBettingGridContainer).style.display = "none";
-  document.getElementById(crapsRoundFinishGridContainer).style.display = "block"
-  document.getElementById(crapsRoundFinishMessage).innerHTML = roundFinishMessage
+  hideElement(crapsBettingGridContainer);
+  showElement(crapsRoundFinishGridContainer);
+  document.getElementById(crapsRoundFinishMessage).innerHTML =
+    roundFinishMessage;
 }
 
-function exiGame(){ 
-  alert("After playing " + currentRounds + " rounds, you leave with " + currentMoney + "$")
-  hideMainGameSection()
-  showRegistrationPane()
+// Exit Game
+
+function exiGame() {
+  alert(
+    "After playing " +
+      currentRounds +
+      " rounds, you leave with " +
+      currentMoney +
+      "$",
+  );
+  hideMainGameSection();
+  showRegistrationPane();
   document.getElementById(crapsUsernameInput).value = "";
 }
