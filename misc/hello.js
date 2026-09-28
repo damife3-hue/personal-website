@@ -41,3 +41,19 @@ for (let i = 0; i < groceryList.length; i++) {
 
 console.log(groceryList)
 console.log ('Index of longest string in the array is: ' + indexOfLongestString + ' which is ' + groceryList[indexOfLongestString])
+
+
+// Ex 4 - Asterisk Pyramid
+
+let rows = 5
+let pyramid = "*"
+
+console.log('For rows = ' + rows)
+
+for (row = 1; row < rows; row++){
+    let printValue = ""
+    for (let column = 0; column < row; column++){
+        printValue += "*"
+    }
+    console.log(printValue)
+}
