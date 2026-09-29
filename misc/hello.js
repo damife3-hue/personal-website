@@ -57,3 +57,33 @@ for (row = 1; row < rows; row++){
     }
     console.log(printValue)
 }
+
+// Ex 5 - Reversed String
+
+let originalString = 'this is a string'
+let reversedString = ''
+console.log('Original: ' + originalString)
+for (character of originalString){
+    reversedString = character + reversedString
+}
+console.log(reversedString)
+
+// Ex 6 - Character Count. Arrays are iterable
+
+let array = ['arrays', 'are', 'iterable']
+let characterCount = {}
+
+console.log(array)
+
+for(let element of array){
+    for(let character of element){
+        // for.. in for objects returns keys. below is !, so it checks if a key is NOT in characterCount
+        if (character in characterCount){ 
+            characterCount[character]+= 1
+        } else {
+            characterCount[character] = 1
+        }
+    }
+}
+
+console.log(characterCount)
