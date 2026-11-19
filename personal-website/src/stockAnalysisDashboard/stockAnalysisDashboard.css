@@ -1,0 +1,9 @@
+#stock-analysis-dashboard{
+    background-image: url('../images/skyline.jpg');
+    height: 100vh;
+    padding: 30px;
+}
+
+#root{
+    height: 100%;
+}

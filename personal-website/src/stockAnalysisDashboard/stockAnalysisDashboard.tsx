@@ -1,6 +1,11 @@
 import { useState } from 'react'
-import {analyzeStock} from './stockAnalysisDashboard.ts'
+import { 
+  analyzeStock, 
+  VerticalAlignContainer, 
+  VerticalAlignContent 
+} from './stockAnalysisDashboard.ts'
 import {Oval} from 'react-loader-spinner'
+import './stockAnalysisDashboard.css'
 
 function StockAnalysisDashboard() {
 
@@ -29,17 +34,20 @@ function StockAnalysisDashboard() {
 
   if(gotData){
     return(
-      <div>
-        <div onClick={() => goBack()}>BACK</div>
+      <VerticalAlignContainer>
+        <VerticalAlignContent>
+          <div onClick={() => goBack()}>BACK</div>
           <div>
               {JSON.stringify(stockData)}
           </div>
-      </div>
+        </VerticalAlignContent>
+      </VerticalAlignContainer>
     )
   }
 
   return (
-    <>
+    <VerticalAlignContainer>
+      <VerticalAlignContent>
         <div>
             <div id="stock-analysis-dashboard-title">STOCK ANALYSIS DASHBOARD</div>
             {isLoading ? (
@@ -51,7 +59,7 @@ function StockAnalysisDashboard() {
                     color="#4fa94d"
                     ariaLabel='oval-loading'
                     wrapperStyle={{}}
-                    wraperClass = ""
+                    wrapperClass = ""
                   />
                 </div>
               ): (
@@ -64,8 +72,9 @@ function StockAnalysisDashboard() {
                 </div>
               )
             }
-          </div>
-    </>
+        </div>
+      </VerticalAlignContent>
+    </VerticalAlignContainer>
   )
 }
 
