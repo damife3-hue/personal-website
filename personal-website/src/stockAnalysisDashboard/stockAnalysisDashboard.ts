@@ -13,9 +13,10 @@ export async function analyzeStock(stockSymbolToAnalyze: string){
    }
    const data = await response.json()
    return data
-   // console.log(data)
-   // document.getElementById("stock-analysis-dashboard-data").innerHTML = JSON.stringify(data);
 }
+
+
+export const PrimaryColor = '#467bb0'
 
 export const VerticalAlignContainer = styled.div`
    width: 100%;
