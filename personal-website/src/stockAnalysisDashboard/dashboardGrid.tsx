@@ -3,6 +3,7 @@ import 'gridstack/dist/gridstack.min.css';
 import { GridStack } from 'gridstack';
 import {DashboardGridContent} from './stockAnalysisDashboard.ts'
 import NumberStat from './numberStat.tsx'
+import LineChartContent from './lineChartContent.tsx'
 
 
 function DashBoardGrid({stockData} : {stockData: any}) {
@@ -47,6 +48,14 @@ function DashBoardGrid({stockData} : {stockData: any}) {
                 label = 'Earnings Per Share'
                 center = {true}
               ></NumberStat>
+            </DashboardGridContent>
+          </div>
+          {/* Second Row */}
+          <div className="grid-stack-item" gs-w="10" gs-h="3">
+            <DashboardGridContent className="grid-stack-item-content">
+              <LineChartContent priceHistory={stockData.priceHistory}>
+                
+              </LineChartContent>
             </DashboardGridContent>
           </div>
         </div>
