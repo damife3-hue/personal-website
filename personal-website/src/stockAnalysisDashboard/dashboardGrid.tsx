@@ -4,6 +4,7 @@ import { GridStack } from 'gridstack';
 import {DashboardGridContent} from './stockAnalysisDashboard.ts'
 import NumberStat from './numberStat.tsx'
 import LineChartContent from './lineChartContent.tsx'
+import NewsList from './newsLinks.tsx'
 
 
 function DashBoardGrid({stockData} : {stockData: any}) {
@@ -63,6 +64,14 @@ function DashBoardGrid({stockData} : {stockData: any}) {
                 {stockData.futureEarningsDates.map((nextDate:string) => (
                   <div>{nextDate}</div>
                 ))}
+            </DashboardGridContent>
+          </div>
+          {/* Third Row */}
+          <div className="grid-stack-item" gs-w="5" gs-h="2">
+            <DashboardGridContent className="grid-stack-item-content">
+              <NewsList newsLinks={stockData.newsArticles}>
+                
+              </NewsList>
             </DashboardGridContent>
           </div>
         </div>
